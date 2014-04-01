@@ -1,4 +1,5 @@
 ## Author: Mike Roylance <roylance.michael@gmail.com>
+## I had a lunch
 
 % start S
 ############################
@@ -6,23 +7,22 @@
 ############################# 
 
 # Normal starts
-S[SEM = <?subj(?vp)>] -> NP[SEM=?subj] VP[SEM=?vp]
+S[SEM=<?subj(?vp)>] -> PN[SEM=?subj] VP[SEM=?vp]
 
-NP[SEM=?np] -> PN[SEM=?np]
-NP[SEM=<?det(?np)>] -> Det[SEM=<?det>] N[SEM=<?np>]
+NP[SEM=<?det(?n)(?adj)>] -> Det[SEM=?det] Adj[SEM=?adj] N[SEM=?n]
 
-VP[SEM=<?vbd(?obj)>] -> VBD[SEM=<?vbd>] NP[SEM=<?obj>]
+VP[SEM=<?vbd(?obj)>] -> VBD[SEM=?vbd] NP[SEM=?obj]
 
 #############################
 # Lexical Rules
 #############################
 
-PN[SEM=<\P.P(I)>] -> 'I'
+PN[SEM=<\P.P(me)>] -> 'I'
 
-Det[SEM=<\P Q.exists x.(P(x) & Q(x))>] -> 'a'
+Det[SEM=<\P R Q.exists x.(P(x) & R(x) & Q(x))>] -> 'a'
 
-Adj -> 'delicious'
+Adj[SEM=<\x.delicious(x)>] -> 'delicious'
 
 N[SEM=<\x.lunch(x)>] -> 'lunch'
 
-VBD[SEM=<\X x.X(\y.eats(x, y))>] -> 'had'
+VBD[SEM=<\X x.X(\y.eat(x,y))>] -> 'had'
