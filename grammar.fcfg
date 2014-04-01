@@ -1,0 +1,28 @@
+## Author: Mike Roylance <roylance.michael@gmail.com>
+
+% start S
+############################
+# Grammar Rules
+############################# 
+
+# Normal starts
+S[SEM = <?subj(?vp)>] -> NP[SEM=?subj] VP[SEM=?vp]
+
+NP[SEM=?np] -> PN[SEM=?np]
+NP[SEM=<?det(?np)>] -> Det[SEM=<?det>] N[SEM=<?np>]
+
+VP[SEM=<?vbd(?obj)>] -> VBD[SEM=<?vbd>] NP[SEM=<?obj>]
+
+#############################
+# Lexical Rules
+#############################
+
+PN[SEM=<\P.P(I)>] -> 'I'
+
+Det[SEM=<\P Q.exists x.(P(x) & Q(x))>] -> 'a'
+
+Adj -> 'delicious'
+
+N[SEM=<\x.lunch(x)>] -> 'lunch'
+
+VBD[SEM=<\X x.X(\y.eats(x, y))>] -> 'had'
